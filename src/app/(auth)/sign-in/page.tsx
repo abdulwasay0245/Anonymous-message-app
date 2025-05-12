@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from "react"
-import { useForm } from "react-hook-form"
+import { SubmitHandler, useForm } from "react-hook-form"
 import { useDebounceValue } from 'usehooks-ts'
 import React from 'react'
 import { useRouter } from "next/navigation"
@@ -11,13 +11,14 @@ import { signUpSchema } from "@/schemas/signUpSchema"
 import { z } from "zod"
 import { apiResponse } from "@/types/apiResponse"
 import {toast} from 'sonner'
+import { Form } from "@/components/ui/form"
 
 
 const Page = () => {
   const [username, setusername] = useState("");
   const [usernameMessage, setusernameMessage] = useState("");
   const [isCheckingUsername, setisCheckingUsername] = useState(false);
-  const [submit, setsubmit] = useState(false)
+  const [issubmitting, setIsSubmitting] = useState(false)
   const debouncedUsername = useDebounceValue(username, 500)
   
   const router = useRouter()
@@ -53,10 +54,27 @@ const Page = () => {
     checkUsernameUnique();
     
   }, [debouncedUsername])
-  
+  const onSubmit = async (data: z.infer<typeof signUpSchema>) => {
+    setIsSubmitting(true)
+    try {
+      const response = axios.post<apiResponse>('/api/sign-up', data);
+      toast('Form is submitted')
+      router.replace(`/verify/${username}`)
+    } catch (error) {
+      console.error("Error occured while submitting form", error);
+      toast("Error occured while submitting form")
+    }
+    finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
-    <div>page</div>
+    <div>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)}></form>
+      </Form>
+    </div>
   )
 }
 
