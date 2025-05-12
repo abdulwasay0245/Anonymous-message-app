@@ -73,7 +73,7 @@ const Page = () => {
   }
 
   return (
-    <div>
+    <div className="min-h-screen bg-amber-300 w-5xl justify-self-center">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
