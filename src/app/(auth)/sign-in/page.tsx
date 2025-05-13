@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from "react"
-import { SubmitHandler, useForm } from "react-hook-form"
+import { useForm } from "react-hook-form"
 import { useDebounceCallback } from 'usehooks-ts'
 import React from 'react'
 import { useRouter } from "next/navigation"
@@ -11,7 +11,7 @@ import { signUpSchema } from "@/schemas/signUpSchema"
 import { z } from "zod"
 import { apiResponse } from "@/types/apiResponse"
 import {toast} from 'sonner'
-import { Form,FormField,FormLabel,FormItem, FormControl, FormDescription } from "@/components/ui/form"
+import { Form,FormField,FormItem, FormControl,  } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Loader2 } from "lucide-react"
@@ -43,6 +43,8 @@ const Page = () => {
       if (username) {
         setisCheckingUsername(true);
         setusernameMessage("");
+        console.log(usernameMessage);
+        
       }
       try {
         const response = await axios.get(`/api/check-user-unique?username=${username}`)
@@ -66,10 +68,11 @@ const Page = () => {
     setIsSubmitting(true)
     try {
       const response = axios.post<apiResponse>('/api/sign-up', data);
+      console.log(response)
       toast('Form is submitted')
       router.replace(`/verify/${username}`)
     } catch (error) {
-      console.error("Error occured while submitting form", error);
+      console.error("Error occured while submitting form", error, );
       toast("Error occured while submitting form")
     }
     finally {
