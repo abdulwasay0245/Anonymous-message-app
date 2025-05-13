@@ -15,7 +15,12 @@ import { Form,FormField,FormLabel,FormItem, FormControl, FormDescription } from 
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Loader2 } from "lucide-react"
+import { Poppins } from "next/font/google"
 
+const poppin = Poppins({
+  subsets: ['latin'],
+  weight:['500']
+})
 
 const Page = () => {
   const [username, setusername] = useState("");
@@ -73,89 +78,103 @@ const Page = () => {
   }
 
   return (
-    <div className="min-h-screen bg-amber-300 w-5xl justify-self-center">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
-          <FormField
-            name= 'username'
-            control={form.control}
-            render={({field }) => (
-              
-              <FormItem>
-                <FormLabel>Username</FormLabel>
-                <FormControl>
-                  <Input placeholder="Enter the username"{...field}
-                    onChange={(e) => {
-                      field.onChange(e)
-                      debounced(e.target.value)
-                    }}
-                  />
-                </FormControl>
-                {isCheckingUsername && <Loader2/>}
-                <FormDescription>
-                  This is your username
-                </FormDescription>
-            </FormItem>
+    <div className="min-h-screen bg-amber-300  flex items-center justify-center">
+      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
+        <div className="text-center">
+          <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
+            Join Mystry message
+          </h1>
+        </div>
 
-            )}
-          
+        <Form {...form}>
+<form onSubmit={form.handleSubmit(onSubmit)}>
+  <FormField
+    name= 'username'
+    control={form.control}
+    render={({field }) => (
+      
+      <FormItem>
+        <FormLabel>Username</FormLabel>
+        <FormControl>
+          <Input placeholder="Enter the username"{...field}
+            onChange={(e) => {
+              field.onChange(e)
+              debounced(e.target.value)
+            }}
           />
+        </FormControl>
+        {isCheckingUsername && <Loader2/>}
+        <FormDescription>
+          This is your username
+        </FormDescription>
+    </FormItem>
 
-          <FormField
-            name= 'email'
-            control={form.control}
-            render={({field }) => (
-              
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input placeholder="Enter your Email"{...field}
-                   
-                  />
-                </FormControl>
-                <FormDescription>
-                  This is your Email
-                </FormDescription>
-              </FormItem>
+    )}
+  
+  />
 
-            )}
-          
+  <FormField
+    name= 'email'
+    control={form.control}
+    render={({field }) => (
+      
+      <FormItem>
+        <FormLabel>Email</FormLabel>
+        <FormControl>
+          <Input placeholder="Enter your Email"{...field}
+           
           />
+        </FormControl>
+        <FormDescription>
+          This is your Email
+        </FormDescription>
+      </FormItem>
 
-          <FormField
-            name= 'password'
-            control={form.control}
-            render={({field }) => (
-              
-              <FormItem>
-                <FormLabel>Password</FormLabel>
-                <FormControl>
-                  <Input type="password" placeholder="Enter you Password"{...field}
-                   
-                  />
-                </FormControl>
-                <FormDescription>
-                  This is your Password
-                </FormDescription>
-            </FormItem>
+    )}
+  
+  />
 
-            )}
-          
+  <FormField
+    name= 'password'
+    control={form.control}
+    render={({field }) => (
+      
+      <FormItem>
+        <FormLabel>Password</FormLabel>
+        <FormControl>
+          <Input type="password" placeholder="Enter you Password"{...field}
+           
           />
-          <Button type="submit" disabled= {issubmitting}>
-            {
-              issubmitting ? (
-                <>
-                  <Loader2/>Please wait
-                </>
-              ): ("Signup")
-            }
-          </Button>
-          
-        </form>
-      </Form>
+        </FormControl>
+        <FormDescription>
+          This is your Password
+        </FormDescription>
+    </FormItem>
+
+    )}
+  
+  />
+  <Button className = { `${poppin.className}  justify-self-center text-xl   bg-[#9747FF] px-[119px] pb-2.5 pt-2.5`}type="submit" disabled= {issubmitting}>
+    {
+      issubmitting ? (
+        <>
+          <Loader2/>Please wait
+        </>
+      ): ("Signup")
+    }
+  </Button>
+  
+</form>
+</Form>
+
+    </div>
     </div>
   )
 }
 
 export default Page
+
+
+
+
+
