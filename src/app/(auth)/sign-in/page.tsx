@@ -78,25 +78,25 @@ const Page = () => {
   }
 
   return (
-    <div className="min-h-screen bg-amber-300  flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center">
       <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
         <div className="text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
-            Join Mystry message
+          <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6 text-[#9747FF]">
+            Signup
           </h1>
         </div>
 
         <Form {...form}>
-<form onSubmit={form.handleSubmit(onSubmit)}>
+<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3.5 flex flex-col">
   <FormField
     name= 'username'
     control={form.control}
     render={({field }) => (
       
       <FormItem>
-        <FormLabel>Username</FormLabel>
+    
         <FormControl>
-          <Input placeholder="Enter the username"{...field}
+          <Input className="rounded-[8px]" placeholder="Enter the username"{...field}
             onChange={(e) => {
               field.onChange(e)
               debounced(e.target.value)
@@ -104,9 +104,7 @@ const Page = () => {
           />
         </FormControl>
         {isCheckingUsername && <Loader2/>}
-        <FormDescription>
-          This is your username
-        </FormDescription>
+   
     </FormItem>
 
     )}
@@ -119,15 +117,13 @@ const Page = () => {
     render={({field }) => (
       
       <FormItem>
-        <FormLabel>Email</FormLabel>
+        
         <FormControl>
           <Input placeholder="Enter your Email"{...field}
            
           />
         </FormControl>
-        <FormDescription>
-          This is your Email
-        </FormDescription>
+       
       </FormItem>
 
     )}
@@ -140,15 +136,13 @@ const Page = () => {
     render={({field }) => (
       
       <FormItem>
-        <FormLabel>Password</FormLabel>
+
         <FormControl>
           <Input type="password" placeholder="Enter you Password"{...field}
            
           />
         </FormControl>
-        <FormDescription>
-          This is your Password
-        </FormDescription>
+        
     </FormItem>
 
     )}
