@@ -39,10 +39,12 @@ const VerifyAccount = () => {
 
   }
   return (
-    <div className='min-h-screen shadow-md w-full max-w-md space-y-8 p-8 bg-amber-200'>
+    <div className='h-screen justify-center flex items-center'>
+      <div className='w-full max-w-md bg-white shadow-md space-y-8 p-8 rounded-lg  text-[#9747FF]'>
       <div>{params.username}</div>
+
       <Form {...form}>
-        <form action="submit" onSubmit={form.handleSubmit(onSubmit)} >
+        <form action="submit" className='space-y-4' onSubmit={form.handleSubmit(onSubmit)} >
 
           <FormItem>
             <FormLabel>Enter your Verification code</FormLabel>
@@ -51,10 +53,11 @@ const VerifyAccount = () => {
             </FormControl>
           </FormItem>
 
-          <Button type='submit' variant={'destructive'} >Submit</Button>
+          <Button type='submit' className='bg-[#9747FF]' >Submit</Button>
         </form>
 
       </Form>
+      </div>
     </div>
   )
 }
