@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Loader2 } from "lucide-react"
 import { Poppins } from "next/font/google"
+import Link from "next/link"
 
 const poppin = Poppins({
   subsets: ['latin'],
@@ -160,7 +161,7 @@ const Page = () => {
       ): ("Signup")
     }
   </Button>
-  
+  <Link href="/log-in">Already have an account?  <a className="" href="/log-in">Log-in</a></Link>
 </form>
 </Form>
 
