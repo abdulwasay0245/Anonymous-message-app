@@ -12,6 +12,13 @@ import axios, { AxiosError } from 'axios'
 import { Form, FormControl, FormItem, FormLabel } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
+import { Poppins } from 'next/font/google'
+
+
+const poppin = Poppins({
+  subsets: ['latin'],
+  weight:['500']
+})
 
 
 const VerifyAccount = () => {
@@ -40,9 +47,10 @@ const VerifyAccount = () => {
   }
   return (
     <div className='h-screen justify-center flex items-center'>
-      <div className='w-full max-w-md bg-white shadow-md space-y-8 p-8 rounded-lg  text-[#9747FF]'>
-      <div>{params.username}</div>
-
+      <div className='w-full max-w-md bg-white shadow-md space-y-6 p-8 rounded-lg '>
+     
+      <h1 className=" text-2xl font-black ">{params.username}</h1>
+      <h1 className="text-[#9747FF] text-4xl font-extrabold tracking-tight  ">Verify Your Email</h1>
       <Form {...form}>
         <form action="submit" className='space-y-4' onSubmit={form.handleSubmit(onSubmit)} >
 
