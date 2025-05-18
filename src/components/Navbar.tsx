@@ -10,7 +10,7 @@ const Navbar = () => {
     const user: User = session?.user
   return (
       <nav className='p-4 md:p-6 shadow-md'>
-          <div>
+          <div className='flex flex-col gap-16'>
               <a href="#">Mystry Message</a>
               {
                   session ? (
@@ -20,7 +20,7 @@ const Navbar = () => {
                       </>
                   ) : (
                           <Link href="sign-in">
-                              <Button>Login</Button>
+                              <Button className='bg-purple-500'>Login</Button>
                           </Link>
                   )
               }
