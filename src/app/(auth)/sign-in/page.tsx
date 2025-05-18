@@ -7,7 +7,6 @@ import React from 'react'
 import { useRouter } from "next/navigation"
 import axios, {AxiosError} from 'axios'
 import {zodResolver} from '@hookform/resolvers/zod'
-import { signUpSchema } from "@/schemas/signUpSchema"
 import { z } from "zod"
 import { apiResponse } from "@/types/apiResponse"
 import {toast} from 'sonner'
@@ -59,7 +58,7 @@ const Page = () => {
       <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
         <div className="text-center">
           <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6 text-[#9747FF]">
-            Signup
+            Signin
           </h1>
         </div>
 
@@ -110,10 +109,10 @@ const Page = () => {
         <>
           <Loader2/>Please wait
         </>
-      ): ("Signup")
+      ): ("Signin")
     }
   </Button>
-  <Link href="/log-in">Already have an account?  <a className="" href="/log-in">Log-in</a></Link>
+  <Link href="/log-in">Dont have an account?  <a className="" href="/sign-up">Signup</a></Link>
 </form>
 </Form>
 
