@@ -47,6 +47,7 @@ const VerifyAccount = () => {
   }
   return (
     <div className='h-screen justify-center flex items-center'>
+      
       <div className='w-full max-w-md bg-white shadow-md space-y-6 p-8 rounded-lg '>
      
       <h1 className=" text-2xl font-black ">{params.username}</h1>

@@ -10,8 +10,8 @@ const Navbar = () => {
     const user: User = session?.user
   return (
       <nav className='p-4 md:p-6 shadow-md'>
-          <div className='flex flex-col gap-16'>
-              <a href="#">Mystry Message</a>
+          <div className='flex px-6 items-center justify-between'>
+              <a href="#" className='font-bold'>Mystry Message</a>
               {
                   session ? (
                       <>
@@ -19,7 +19,7 @@ const Navbar = () => {
                           <Button onClick={()=> signOut()}>Logout</Button>
                       </>
                   ) : (
-                          <Link href="sign-in">
+                          <Link href="../sign-in">
                               <Button className='bg-purple-500'>Login</Button>
                           </Link>
                   )
