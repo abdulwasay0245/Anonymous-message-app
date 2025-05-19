@@ -90,7 +90,11 @@ const Dashboard = () => {
     }
     
     if (!session || !session.user) {
-        return <div>Please login</div>
+        return <div className='w-full h-screen bg-brand  flex items-center justify-center'>
+            <h1 className='text-4xl font-bold'>
+                You are not Logged in 
+            </h1>
+        </div>
     }
 
 
