@@ -27,14 +27,14 @@ import { apiResponse } from '@/types/apiResponse'
 import { toast } from 'sonner'
 
   
-type MessageProps{
+type MessageProps ={
  
     message: string,
     onMessageDelete: (messageId: string)=> void
 
 }
 
-const MessageCard = ({ message, onMessageDelete }) => {
+const MessageCard = ({ message, onMessageDelete }: MessageProps) => {
     
     const handleMessageDelete = async () => {
         const response = await axios.delete<apiResponse>(`/api/delete-message/${message._id}`)
